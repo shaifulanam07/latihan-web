@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pace</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Mengubah latar belakang menjadi hitam */
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 150vh; /* Mengatur tinggi halaman */
+        }
+
+        form {
+            background-color: rgba(0, 0, 0, 0.8); /* Sedikit lebih terang untuk kontras */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(255, 255, 255, 0.5); /* Mengubah warna bayangan */
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #ffdd57; /* Warna teks judul */
+            margin-bottom: 20px;
+        }
+
+        fieldset {
+            border: none;
+            margin-bottom: 15px;
+        }
+
+        legend {
+            font-size: 1.3em;
+            color: #ffdd57; /* Warna teks legend */
+        }
+
+        label {
+            font-size: 1.1em;
+            color: #ffdd57; /* Warna teks label */
+        }
+
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ffdd57; /* Warna border */
+            border-radius: 5px;
+            background-color: #444; /* Warna latar belakang input */
+            color: white; /* Warna teks input */
+            transition: border 0.3s; /* Animasi saat fokus */
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border: 1px solid #ffdd57; /* Border saat fokus */
+            outline: none;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        p {
+            font-size: 1em;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ffdd57; /* Warna tombol */
+            color: #000; /* Warna teks tombol */
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s; /* Animasi saat hover */
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #ffc107; /* Warna saat hover */
+        }
+
+        img {
+            display: block;
+            margin: 0 auto 20px auto;
+            border-radius: 50%; /* Circular image */
+            width: 150px;
+            height: 150px;
+            object-fit: cover; /* Memastikan gambar tidak terdistorsi */
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        th,
+        td {
+            border: 1px solid #ffdd57; /* Warna border tabel */
+            padding: 10px;
+            text-align: left;
+            color: #fff; /* Warna teks tabel */
+        }
+
+        th {
+            background-color: #ffdd57; /* Warna latar belakang header tabel */
+            color: #000; /* Warna teks header tabel */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Formulir dengan gambar dan berbagai input -->
+    <form id="userForm">
+        <img src="C:\Users\pc\OneDrive\Pictures\ipul.jpg" alt="Profile Picture">
+        <h1>BABON</h1>
+        <fieldset>
+            <legend>Formulir</legend>
+            <p>
+                <label>Nama Depan</label>
+                <input type="text" name="NamaDepan" placeholder="Nama depan..." required />
+            </p>
+            <p>
+                <label>Nama Belakang</label>
+                <input type="text" name="NamaBelakang" placeholder="Nama belakang..." required />
+            </p>
+            <p>
+                <label>Password</label>
+                <input type="password" name="Password" placeholder="Password..." required />
+            </p>
+            <p>
+                <label>Jenis Kelamin (Dropdown)</label>
+                <select name="JK" required>
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select>
+            </p>
+            <p>Jenis Kelamin (Radio Button)</p>
+            <p><input type='radio' name='JenisKelaminRadio' value='Laki-laki' required />Laki-laki</p>
+            <p><input type='radio' name='JenisKelaminRadio' value='Perempuan' />Perempuan</p>
+
+            <p>Jenis Kelamin (Checkbox)</p>
+            <p><input type='checkbox' name='JenisKelaminCheckbox' value='Laki-laki' />Laki-laki</p>
+            <p><input type='checkbox' name='JenisKelaminCheckbox' value='Perempuan' />Perempuan</p>
+            <p>
+                <input type="submit" value="Submit" />
+                <input type="reset" value="Batal" />
+            </p>
+        </fieldset>
+    </form>
+
+    <!-- Tabel untuk menampilkan data yang di-submit -->
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Nama Depan</th>
+                <th>Nama Belakang</th>
+                <th>Jenis Kelamin (Dropdown)</th>
+                <th>Jenis Kelamin (Radio)</th>
+                <th>Jenis Kelamin (Checkbox)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Baris akan ditambahkan secara dinamis -->
+        </tbody>
+    </table>
+
+    <script>
+        // Fungsi untuk menangani submit form
+        document.getElementById('userForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Mencegah submit default
+
+            // Ambil data form
+            var namaDepan = document.querySelector('input[name="NamaDepan"]').value;
+            var namaBelakang = document.querySelector('input[name="NamaBelakang"]').value;
+            var jenisKelaminDropdown = document.querySelector('select[name="JK"]').value;
+            var jenisKelaminRadio = document.querySelector('input[name="JenisKelaminRadio"]:checked').value;
+            var jenisKelaminCheckbox = [];
+            document.querySelectorAll('input[name="JenisKelaminCheckbox"]:checked').forEach(function (checkbox) {
+                jenisKelaminCheckbox.push(checkbox.value);
+            });
+
+            // Tambahkan data ke tabel
+            var table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow(); // Insert baris baru
+
+            // Buat cell untuk setiap kolom
+            newRow.insertCell(0).innerHTML = namaDepan;
+            newRow.insertCell(1).innerHTML = namaBelakang;
+            newRow.insertCell(2).innerHTML = jenisKelaminDropdown;
+            newRow.insertCell(3).innerHTML = jenisKelaminRadio;
+            newRow.insertCell(4).innerHTML = jenisKelaminCheckbox.join(', ');
+
+            // Reset form setelah submit
+            document.getElementById('userForm').reset();
+        });
+    </script>
+
+</body>
+
+</html>
